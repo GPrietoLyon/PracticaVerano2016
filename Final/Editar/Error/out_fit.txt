@@ -1,0 +1,21 @@
+          12
+ WRITE_ISEDFIT_PARAMFILE: Writing /home/ptroncos/verano2017/fit_fsps/photoz_Frontierv6//zd_paramfile.par
+ ISEDFIT: SPSMODELS=fsps_v2.4_miles, REDCURVE=charlot, IMF=salp, SFHGRID=01
+ ISEDFIT: Reading all the model parameters into memory.
+ISEDFIT: Chunk 1/8         CHUNKFILE       STRING    = '/home/ptroncos/verano2017/fit_fsps/photoz_Frontierv6/sfhgrid01/charlot/zd_fsps_v2.4_miles_s'...
+/home/ptroncos/verano2017/fit_fsps/photoz_Frontierv6/sfhgrid01/charlot/zd_fsps_v2.4_miles_salp_chunk_0001.fits
+ISEDFIT: Chunk 2/8         CHUNKFILE       STRING    = '/home/ptroncos/verano2017/fit_fsps/photoz_Frontierv6/sfhgrid01/charlot/zd_fsps_v2.4_miles_s'...
+/home/ptroncos/verano2017/fit_fsps/photoz_Frontierv6/sfhgrid01/charlot/zd_fsps_v2.4_miles_salp_chunk_0002.fits
+ISEDFIT: Chunk 3/8         CHUNKFILE       STRING    = '/home/ptroncos/verano2017/fit_fsps/photoz_Frontierv6/sfhgrid01/charlot/zd_fsps_v2.4_miles_s'...
+/home/ptroncos/verano2017/fit_fsps/photoz_Frontierv6/sfhgrid01/charlot/zd_fsps_v2.4_miles_salp_chunk_0003.fits
+ISEDFIT: Chunk 4/8         CHUNKFILE       STRING    = '/home/ptroncos/verano2017/fit_fsps/photoz_Frontierv6/sfhgrid01/charlot/zd_fsps_v2.4_miles_s'...
+/home/ptroncos/verano2017/fit_fsps/photoz_Frontierv6/sfhgrid01/charlot/zd_fsps_v2.4_miles_salp_chunk_0004.fits
+ISEDFIT: Chunk 5/8         CHUNKFILE       STRING    = '/home/ptroncos/verano2017/fit_fsps/photoz_Frontierv6/sfhgrid01/charlot/zd_fsps_v2.4_miles_s'...
+/home/ptroncos/verano2017/fit_fsps/photoz_Frontierv6/sfhgrid01/charlot/zd_fsps_v2.4_miles_salp_chunk_0005.fits
+ISEDFIT: Chunk 6/8         CHUNKFILE       STRING    = '/home/ptroncos/verano2017/fit_fsps/photoz_Frontierv6/sfhgrid01/charlot/zd_fsps_v2.4_miles_s'...
+/home/ptroncos/verano2017/fit_fsps/photoz_Frontierv6/sfhgrid01/charlot/zd_fsps_v2.4_miles_salp_chunk_0006.fits
+ISEDFIT: Chunk 7/8         CHUNKFILE       STRING    = '/home/ptroncos/verano2017/fit_fsps/photoz_Frontierv6/sfhgrid01/charlot/zd_fsps_v2.4_miles_s'...
+/home/ptroncos/verano2017/fit_fsps/photoz_Frontierv6/sfhgrid01/charlot/zd_fsps_v2.4_miles_salp_chunk_0007.fits
+ISEDFIT: Chunk 8/8         CHUNKFILE       STRING    = '/home/ptroncos/verano2017/fit_fsps/photoz_Frontierv6/sfhgrid01/charlot/zd_fsps_v2.4_miles_s'...
+/home/ptroncos/verano2017/fit_fsps/photoz_Frontierv6/sfhgrid01/charlot/zd_fsps_v2.4_miles_salp_chunk_0008.fits
+ISEDFIT: Galaxy 0/149         

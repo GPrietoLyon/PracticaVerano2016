@@ -1,0 +1,37 @@
+          12
+ WRITE_ISEDFIT_PARAMFILE: Writing /home/ptroncos/verano2017/fit_maraston/Frontierv6//zd_paramfile.par
+ ISEDFIT: SPSMODELS=maraston05, REDCURVE=charlot, IMF=salp, SFHGRID=01
+ ISEDFIT: Reading all the model parameters into memory.
+ISEDFIT: Chunk 1/8         CHUNKFILE       STRING    = '/home/ptroncos/verano2017/fit_maraston/Frontierv6/sfhgrid01/charlot/zd_maraston05_salp_chun'...
+/home/ptroncos/verano2017/fit_maraston/Frontierv6/sfhgrid01/charlot/zd_maraston05_salp_chunk_0001.fits
+ISEDFIT: Chunk 2/8         CHUNKFILE       STRING    = '/home/ptroncos/verano2017/fit_maraston/Frontierv6/sfhgrid01/charlot/zd_maraston05_salp_chun'...
+/home/ptroncos/verano2017/fit_maraston/Frontierv6/sfhgrid01/charlot/zd_maraston05_salp_chunk_0002.fits
+ISEDFIT: Chunk 3/8         CHUNKFILE       STRING    = '/home/ptroncos/verano2017/fit_maraston/Frontierv6/sfhgrid01/charlot/zd_maraston05_salp_chun'...
+/home/ptroncos/verano2017/fit_maraston/Frontierv6/sfhgrid01/charlot/zd_maraston05_salp_chunk_0003.fits
+ISEDFIT: Chunk 4/8         CHUNKFILE       STRING    = '/home/ptroncos/verano2017/fit_maraston/Frontierv6/sfhgrid01/charlot/zd_maraston05_salp_chun'...
+/home/ptroncos/verano2017/fit_maraston/Frontierv6/sfhgrid01/charlot/zd_maraston05_salp_chunk_0004.fits
+ISEDFIT: Chunk 5/8         CHUNKFILE       STRING    = '/home/ptroncos/verano2017/fit_maraston/Frontierv6/sfhgrid01/charlot/zd_maraston05_salp_chun'...
+/home/ptroncos/verano2017/fit_maraston/Frontierv6/sfhgrid01/charlot/zd_maraston05_salp_chunk_0005.fits
+ISEDFIT: Chunk 6/8         CHUNKFILE       STRING    = '/home/ptroncos/verano2017/fit_maraston/Frontierv6/sfhgrid01/charlot/zd_maraston05_salp_chun'...
+/home/ptroncos/verano2017/fit_maraston/Frontierv6/sfhgrid01/charlot/zd_maraston05_salp_chunk_0006.fits
+ISEDFIT: Chunk 7/8         CHUNKFILE       STRING    = '/home/ptroncos/verano2017/fit_maraston/Frontierv6/sfhgrid01/charlot/zd_maraston05_salp_chun'...
+/home/ptroncos/verano2017/fit_maraston/Frontierv6/sfhgrid01/charlot/zd_maraston05_salp_chunk_0007.fits
+ISEDFIT: Chunk 8/8         CHUNKFILE       STRING    = '/home/ptroncos/verano2017/fit_maraston/Frontierv6/sfhgrid01/charlot/zd_maraston05_salp_chun'...
+/home/ptroncos/verano2017/fit_maraston/Frontierv6/sfhgrid01/charlot/zd_maraston05_salp_chunk_0008.fits
+GalaxyChunk 0/1, Modelgrid 1/1, Galaxy 0/110         GalaxyChunk 0/1, Modelgrid 1/1, Galaxy 50/110         GalaxyChunk 0/1, Modelgrid 1/1, Galaxy 100/110         Computing the posterior for galaxy 0/110         Computing the posterior for galaxy 50/110         Computing the posterior for galaxy 100/110          ISEDFIT: First GalaxyChunk = 3.6666 sec, 0.341 GB
+ ISEDFIT: All GalaxyChunks = 3.71902 sec, 0.246 GB
+  IM_MWRFITS: Writing /home/ptroncos/verano2017/fit_maraston/Frontierv6/zd_maraston05_salp_charlot_sfhgrid01.fits
+  IM_MWRFITS: Writing /home/ptroncos/verano2017/fit_maraston/Frontierv6/zd_maraston05_salp_charlot_sfhgrid01_post.fits
+  READ_ISEDFIT: Reading /home/ptroncos/verano2017/fit_maraston/Frontierv6/zd_maraston05_salp_charlot_sfhgrid01.fits.gz
+   ISEDFIT_RECONSTRUCT_POSTERIOR: Reading /home/ptroncos/verano2017/fit_maraston/Frontierv6/zd_maraston05_salp_charlot_sfhgrid01.fits.gz
+   ISEDFIT_RECONSTRUCT_POSTERIOR: Reading /home/ptroncos/verano2017/fit_maraston/Frontierv6/zd_maraston05_salp_charlot_sfhgrid01_post.fits.gz
+  READ_ISEDFIT: Reading /home/ptroncos/verano2017/fit_maraston/Frontierv6/montegrids/sfhgrid01/maraston05/charlot/zd_maraston05_salp_chunk_0001.fits
+  READ_ISEDFIT: Reading /home/ptroncos/verano2017/fit_maraston/Frontierv6/montegrids/sfhgrid01/maraston05/charlot/zd_maraston05_salp_chunk_0002.fits
+  READ_ISEDFIT: Reading /home/ptroncos/verano2017/fit_maraston/Frontierv6/montegrids/sfhgrid01/maraston05/charlot/zd_maraston05_salp_chunk_0003.fits
+  READ_ISEDFIT: Reading /home/ptroncos/verano2017/fit_maraston/Frontierv6/montegrids/sfhgrid01/maraston05/charlot/zd_maraston05_salp_chunk_0004.fits
+  READ_ISEDFIT: Reading /home/ptroncos/verano2017/fit_maraston/Frontierv6/montegrids/sfhgrid01/maraston05/charlot/zd_maraston05_salp_chunk_0005.fits
+  READ_ISEDFIT: Reading /home/ptroncos/verano2017/fit_maraston/Frontierv6/montegrids/sfhgrid01/maraston05/charlot/zd_maraston05_salp_chunk_0006.fits
+  READ_ISEDFIT: Reading /home/ptroncos/verano2017/fit_maraston/Frontierv6/montegrids/sfhgrid01/maraston05/charlot/zd_maraston05_salp_chunk_0007.fits
+  READ_ISEDFIT: Reading /home/ptroncos/verano2017/fit_maraston/Frontierv6/montegrids/sfhgrid01/maraston05/charlot/zd_maraston05_salp_chunk_0008.fits
+  READ_ISEDFIT: Reading IGM attenuation lookup table
+MRDFITS: Binary table.  3 columns by  1 rows.

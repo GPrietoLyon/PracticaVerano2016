@@ -1,0 +1,33 @@
+2 versiones, una filtrada y la otra no.
+
+EWASS 2017 -> european week of astronomy and space science (prague)
+
+----------------------------
+Se usa sextractor en un comienzo.
+
+Buscamos galaxias star forming ya que son las mas faciles de reconocer con espectroscopia.
+
+Tecnica de drop out basada en lo que se ve y lo que no se ve.
+Se debe diferenciar si es roja por estar a alto redshift. Se usan estos criterios (desigualdades) que vi en los papers del profesor infante.
+
+
+catalogo: Frontier_isedfit_format_v6 -> catalogo sextractor (150 objetos).
+
+/home/ptroncos/hff/final_fit/legacy/
+
+
+-> checkear si un tau~6 tiene sentido. (revisar unidades ¿gigayr,megayr,kyr? y plotear con la formula del paper)
+
+
+-----
+
+Determinar cuales son buenos candidatos (zPDFs), caracterizar la muestra (determinar M*,SFR,etc, Lagos et al 2014) comparando con la literatura (laporte et al. 2016)
+
+
+Lagos et al 2014 -> The Fundamental plane of star formation in galaxies revealed by the EAGLE hydrodinamical simulations.
+
+Busqueda de candidatos en RELICS (Tesis)
+
+
+
+

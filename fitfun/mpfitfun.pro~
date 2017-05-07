@@ -1,0 +1,8 @@
+pro mpfitfun
+
+
+;
+restore,"data.sav" 
+
+
+end

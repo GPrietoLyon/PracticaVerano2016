@@ -1,0 +1,231 @@
+pro comp_spsv2
+
+dir='/home/ptroncos/verano2017/'
+cd,dir
+sps=['fsps','bc03','pegase','maraston']
+ngal=100
+mass=DBLARR(4,ngal,3);0-> fsps , 1->bc03 , 2-> pegase , 3-> maraston 
+age=DBLARR(4,ngal,3)
+zm=DBLARR(4,ngal,3)
+tau=DBLARR(4,ngal,3)
+sfr=DBLARR(4,ngal,3)
+av=DBLARR(4,ngal,3)
+
+for isps=0,n_elements(sps)-1 do begin
+
+	
+	dir_sps=dir+'fit_'+sps[isps]+'/Frontierv6'
+	cd,dir_sps
+	param=read_isedfit("zd_paramfile.par",isedfit_post=pd)
+	
+	for ig=0,ngal-1 do begin
+	
+		 mass(isps,ig,0)=cgPercentiles(pd[ig].MSTAR,Percentiles=0.5);media
+		 mass(isps,ig,1)=cgPercentiles(pd[ig].MSTAR,Percentiles=0.841)-cgPercentiles(pd[ig].MSTAR,Percentiles=0.5);+sigma
+		 mass(isps,ig,2)=cgPercentiles(pd[ig].MSTAR,Percentiles=0.5)-cgPercentiles(pd[ig].MSTAR,Percentiles=0.159);-sigma
+
+		 age(isps,ig,0)=cgPercentiles(pd[ig].AGE,Percentiles=0.5);media
+		 age(isps,ig,1)=cgPercentiles(pd[ig].AGE,Percentiles=0.841)-cgPercentiles(pd[ig].AGE,Percentiles=0.5);+sigma
+		 age(isps,ig,2)=cgPercentiles(pd[ig].AGE,Percentiles=0.5)-cgPercentiles(pd[ig].AGE,Percentiles=0.159);-sigma
+
+		 zm(isps,ig,0)=cgPercentiles(pd[ig].ZMETAL,Percentiles=0.5);media
+		 zm(isps,ig,1)=cgPercentiles(pd[ig].ZMETAL,Percentiles=0.841)-cgPercentiles(pd[ig].ZMETAL,Percentiles=0.5);+sigma
+		 zm(isps,ig,2)=cgPercentiles(pd[ig].ZMETAL,Percentiles=0.5)-cgPercentiles(pd[ig].ZMETAL,Percentiles=0.159);-sigma
+
+		 tau(isps,ig,0)=cgPercentiles(pd[ig].TAU,Percentiles=0.5);media
+		 tau(isps,ig,1)=cgPercentiles(pd[ig].TAU,Percentiles=0.841)-cgPercentiles(pd[ig].TAU,Percentiles=0.5);+sigma
+		 tau(isps,ig,2)=cgPercentiles(pd[ig].TAU,Percentiles=0.5)-cgPercentiles(pd[ig].TAU,Percentiles=0.159);-sigma
+
+		 sfr(isps,ig,0)=cgPercentiles(pd[ig].SFR,Percentiles=0.5);media
+		 sfr(isps,ig,1)=cgPercentiles(pd[ig].SFR,Percentiles=0.841)-cgPercentiles(pd[ig].SFR,Percentiles=0.5);+sigma
+		 sfr(isps,ig,2)=cgPercentiles(pd[ig].SFR,Percentiles=0.5)-cgPercentiles(pd[ig].SFR,Percentiles=0.159);-sigma
+
+		 av(isps,ig,0)=cgPercentiles(pd[ig].AV,Percentiles=0.5);media
+		 av(isps,ig,1)=cgPercentiles(pd[ig].AV,Percentiles=0.841)-cgPercentiles(pd[ig].AV,Percentiles=0.5);+sigma
+		 av(isps,ig,2)=cgPercentiles(pd[ig].AV,Percentiles=0.5)-cgPercentiles(pd[ig].AV,Percentiles=0.159);-sigma
+		
+endfor
+endfor
+cd,"/home/ptroncos/verano2017/comparacion/Frontierv6"
+cgps_open,'c_errF.ps'
+
+
+
+x=FINDGEN(16)
+y=FINDGEN(16)
+
+;masa
+
+s=0.3
+
+
+
+cgScatter2D,mass(0,*,0), mass(1,*,0),Fit=0,grid=1,xtitle="Mass(FSPS)", ytitle="Mass BC03(blue),PEGASE(green),MARASTON(red)",title="Comparing mass",/nodata,xr=[8,12],yr=[8,12]
+
+        oploterror, mass(0,*,0), mass(1,*,0), mass(1,*,1), ps=2,symsize=s, color='blue', errcolor='blue', /hibar;fsps-bc03
+        oploterror, mass(0,*,0), mass(1,*,0), mass(1,*,2), ps=2,symsize=s, color='blue', errcolor='blue', /lobar
+
+        oploterror, mass(0,*,0), mass(2,*,0), mass(2,*,1), ps=6,symsize=s, color='green', errcolor='green', /hibar;fsps-pegase
+        oploterror, mass(0,*,0), mass(2,*,0), mass(2,*,2), ps=6,symsize=s, color='green', errcolor='green', /lobar
+
+        oploterror, mass(0,*,0), mass(3,*,0), mass(3,*,1), ps=4,symsize=s, color='red', errcolor='red', /hibar;fsps-maraston
+        oploterror, mass(0,*,0), mass(3,*,0), mass(3,*,2), ps=4,symsize=s, color='red', errcolor='red', /lobar
+
+
+	cgplot,x,y,/overplot
+
+
+
+
+cgScatter2D,mass(0,*,0), mass(1,*,0),Fit=0,grid=1, xtitle="Age(FSPS)", ytitle="Age BC03(blue),PEGASE(green),MARASTON(red)",title="Comparing age",/nodata,xr=[0,1],yr=[0,1]
+
+
+
+        oploterror, age(0,*,0), age(1,*,0), age(1,*,1), ps=2,symsize=s, color='blue', errcolor='blue', /hibar
+        oploterror, age(0,*,0), age(1,*,0), age(1,*,2), ps=2,symsize=s, color='blue', errcolor='blue', /lobar
+
+        oploterror, age(0,*,0), age(2,*,0), age(2,*,1), ps=6,symsize=s, color='green', errcolor='green', /hibar
+        oploterror, age(0,*,0), age(2,*,0), age(2,*,2), ps=6,symsize=s, color='green', errcolor='green', /lobar
+
+        oploterror, age(0,*,0), age(3,*,0), age(3,*,1), ps=4,symsize=s, color='red', errcolor='red', /hibar
+        oploterror, age(0,*,0), age(3,*,0), age(3,*,2), ps=4,symsize=s, color='red', errcolor='red', /lobar
+
+	cgplot,x,y,/overplot
+
+
+
+
+cgplot,mass(0,*,0), mass(1,*,0), xtitle="Zmetal(FSPS)", ytitle="Zmetal BC03(blue),PEGASE(green),MARASTON(red)",title="Comparing Metallicity",/nodata,xr=[0,0.05],yr=[0,0.05]
+
+        oploterror, zm(0,*,0), zm(1,*,0), zm(1,*,1), ps=2,symsize=s, color='blue', errcolor='blue', /hibar
+        oploterror, zm(0,*,0), zm(1,*,0), zm(1,*,2), ps=2,symsize=s, color='blue', errcolor='blue', /lobar
+
+        oploterror, zm(0,*,0), zm(2,*,0), zm(2,*,1), ps=6,symsize=s, color='green', errcolor='green', /hibar
+        oploterror, zm(0,*,0), zm(2,*,0), zm(2,*,2), ps=6,symsize=s, color='green', errcolor='green', /lobar
+
+        oploterror, zm(0,*,0), zm(3,*,0), zm(3,*,1), ps=4,symsize=s, color='red', errcolor='red', /hibar
+        oploterror, zm(0,*,0), zm(3,*,0), zm(3,*,2), ps=4,symsize=s, color='red', errcolor='red', /lobar
+
+	cgplot,x,y,/overplot
+
+cgplot,mass(0,*,0), mass(1,*,0), xtitle="tau(FSPS)", ytitle="tau BC03(blue),PEGASE(green),MARASTON(red)",title="Comparing tau",/nodata,xr=[0,14],yr=[0,14]
+
+        oploterror, tau(0,*,0), tau(1,*,0), tau(1,*,1), ps=2,symsize=s, color='blue', errcolor='blue', /hibar
+        oploterror, tau(0,*,0), tau(1,*,0), tau(1,*,2), ps=2,symsize=s, color='blue', errcolor='blue', /lobar
+
+        oploterror, tau(0,*,0), zm(2,*,0), tau(2,*,1), ps=6,symsize=s, color='green', errcolor='green', /hibar
+        oploterror, tau(0,*,0), tau(2,*,0), tau(2,*,2), ps=6,symsize=s, color='green', errcolor='green', /lobar
+
+        oploterror, tau(0,*,0), tau(3,*,0), tau(3,*,1), ps=4,symsize=s, color='red', errcolor='red', /hibar
+        oploterror, tau(0,*,0), tau(3,*,0), tau(3,*,2), ps=4,symsize=s, color='red', errcolor='red', /lobar
+
+	cgplot,x,y,/overplot
+
+cgplot,sfr(0,*,0), sfr(1,*,0), xtitle="sfr(FSPS)", ytitle="sfr BC03(blue),PEGASE(green),MARASTON(red)",title="Comparing sfr",/nodata,xr=[0,2],yr=[0,2]
+
+        oploterror, sfr(0,*,0), sfr(1,*,0), sfr(1,*,1), ps=2,symsize=s, color='blue', errcolor='blue', /hibar
+        oploterror, sfr(0,*,0), sfr(1,*,0), sfr(1,*,2), ps=2,symsize=s, color='blue', errcolor='blue', /lobar
+
+        oploterror, sfr(0,*,0), sfr(2,*,0), sfr(2,*,1), ps=6,symsize=s, color='green', errcolor='green', /hibar
+        oploterror, sfr(0,*,0), sfr(2,*,0), sfr(2,*,2), ps=6,symsize=s, color='green', errcolor='green', /lobar
+
+        oploterror, sfr(0,*,0), sfr(3,*,0), sfr(3,*,1), ps=4,symsize=s, color='red', errcolor='red', /hibar
+        oploterror, sfr(0,*,0), sfr(3,*,0), sfr(3,*,2), ps=4,symsize=s, color='red', errcolor='red', /lobar
+
+	cgplot,x,y,/overplot
+
+cgplot,av(0,*,0), av(1,*,0), xtitle="av(FSPS)", ytitle="av BC03(blue),PEGASE(green),MARASTON(red)",title="Comparing av",/nodata
+
+        oploterror, av(0,*,0), av(1,*,0), av(1,*,1), ps=2,symsize=s, color='blue', errcolor='blue', /hibar
+        oploterror, av(0,*,0), av(1,*,0), av(1,*,2), ps=2,symsize=s, color='blue', errcolor='blue', /lobar
+
+        oploterror, av(0,*,0), av(2,*,0), av(2,*,1), ps=6,symsize=s, color='green', errcolor='green', /hibar
+        oploterror, av(0,*,0), av(2,*,0), av(2,*,2), ps=6,symsize=s, color='green', errcolor='green', /lobar
+
+        oploterror, av(0,*,0), av(3,*,0), av(3,*,1), ps=4,symsize=s, color='red', errcolor='red', /hibar
+        oploterror, av(0,*,0), av(3,*,0), av(3,*,2), ps=4,symsize=s, color='red', errcolor='red', /lobar
+
+	cgplot,x,y,/overplot
+
+cgps_close, /pdf
+
+
+
+
+
+
+
+;plots sin errores
+cgps_open,'c_noerrF.ps'
+s=1.0
+cgScatter2D,mass(0,*,0), mass(1,*,0),Fit=0,grid=1,xtitle="Mass(FSPS)", ytitle="Mass BC03(blue),PEGASE(green),MARASTON(red)",title="Comparing mass",/nodata,xr=[8,12],yr=[8,12],ps=4
+
+        cgplot, mass(0,*,0), mass(1,*,0), ps=4,symsize=s, color='blue',/overplot;fsps-bc03
+
+        cgplot, mass(0,*,0), mass(2,*,0), ps=4,symsize=s, color='green',/overplot;fsps-pegase
+
+        cgplot, mass(0,*,0), mass(3,*,0), ps=4,symsize=s, color='red',/overplot;fsps-maraston
+
+	cgplot,x,y,/overplot
+
+cgScatter2D,age(0,*,0), age(1,*,0),Fit=0,grid=1,xtitle="Age(FSPS)", ytitle="Age BC03(blue),PEGASE(green),MARASTON(red)",title="Comparing age",/nodata,xr=[0,1],yr=[0,1],ps=4
+
+        cgplot, age(0,*,0), age(1,*,0), ps=4,symsize=s, color='blue',/overplot;fsps-bc03
+
+        cgplot, age(0,*,0), age(2,*,0), ps=4,symsize=s, color='green',/overplot;fsps-pegase
+
+        cgplot, age(0,*,0), age(3,*,0), ps=4,symsize=s, color='red',/overplot;fsps-maraston
+
+	cgplot,x,y,/overplot
+
+cgScatter2D,zm(0,*,0), zm(1,*,0),Fit=0,grid=1,xtitle="Zmetal(FSPS)", ytitle="Zmetal BC03(blue),PEGASE(green),MARASTON(red)",title="Comparing metallicity",/nodata,xr=[0,0.05],yr=[0,0.05],ps=4
+
+        cgplot, zm(0,*,0), zm(1,*,0), ps=4,symsize=s, color='blue',/overplot;fsps-bc03
+
+        cgplot, zm(0,*,0), zm(2,*,0), ps=4,symsize=s, color='green',/overplot;fsps-pegase
+
+        cgplot, zm(0,*,0), zm(3,*,0), ps=4,symsize=s, color='red',/overplot;fsps-maraston
+
+	cgplot,x,y,/overplot
+
+
+
+cgplot,tau(0,*,0), tau(1,*,0),xtitle="tau(FSPS)", ytitle="tau BC03(blue),PEGASE(green),MARASTON(red)",title="Comparing tau",/nodata,xr=[0,14],yr=[0,14],ps=4
+
+        cgplot, tau(0,*,0), tau(1,*,0), ps=4,symsize=s, color='blue',/overplot;fsps-bc03
+
+        cgplot, tau(0,*,0), tau(2,*,0), ps=4,symsize=s, color='green',/overplot;fsps-pegase
+
+       cgplot, tau(0,*,0), tau(3,*,0), ps=4,symsize=s, color='red',/overplot;fsps-maraston
+
+	cgplot,x,y,/overplot
+
+cgplot,sfr(0,*,0), sfr(1,*,0),xtitle="sfr(FSPS)", ytitle="sfr BC03(blue),PEGASE(green),MARASTON(red)",title="Comparing sfr",/nodata,ps=4,xr=[0,2],yr=[0,2]
+
+        cgplot, sfr(0,*,0), sfr(1,*,0), ps=4,symsize=s, color='blue',/overplot;fsps-bc03
+
+        cgplot, sfr(0,*,0), sfr(2,*,0), ps=4,symsize=s, color='green',/overplot;fsps-pegase
+
+       cgplot, sfr(0,*,0), sfr(3,*,0), ps=4,symsize=s, color='red',/overplot;fsps-maraston
+
+	cgplot,x,y,/overplot
+
+cgplot,av(0,*,0), av(1,*,0),xtitle="av(FSPS)", ytitle="av BC03(blue),PEGASE(green),MARASTON(red)",title="Comparing av",/nodata,ps=4
+
+        cgplot, av(0,*,0), av(1,*,0), ps=4,symsize=s, color='blue',/overplot;fsps-bc03
+
+        cgplot, av(0,*,0), av(2,*,0), ps=4,symsize=s, color='green',/overplot;fsps-pegase
+
+       cgplot, av(0,*,0), av(3,*,0), ps=4,symsize=s, color='red',/overplot;fsps-maraston
+
+	cgplot,x,y,/overplot
+
+cgps_close, /pdf
+
+
+
+
+end
+	
+	
+	
